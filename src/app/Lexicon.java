@@ -50,5 +50,10 @@ public class Lexicon {
         }
         return output;
     }
+    
+    public String transword(String s) {
+    	String output = "";
+    	return output;
+    }
 
 }
