@@ -28,7 +28,7 @@ public class Lexicon {
     }
 
     public String translate(String s) {
-        char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
         String output = "";
         for (int i = 0; i < s.length(); i++) {
@@ -51,9 +51,25 @@ public class Lexicon {
         return output;
     }
     
+    //translating a sentence
     public String transword(String s) {
     	String output = "";
-    	return output;
+  	  while (s.length()>0)
+  	  {
+  		  int space = s.indexOf(" ");
+  		  
+  		  if(space != -1)
+  			  output = output + (translate(s.substring(0, space))) + " ";
+  		  else
+  			  output = output + translate(s.substring(0)) + " ";
+  		  
+  		  if(space != -1 && space != 0)
+  			  s = s.substring(space+1);
+  		  else
+  			  s = "";
+  	  }
+  	  
+  	  return output;
     }
 
 }

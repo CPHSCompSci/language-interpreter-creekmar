@@ -2,15 +2,19 @@ package app;
 import java.util.Scanner;
 
 public class Main {
+    static Scanner scan = new Scanner(System.in);
   //Test Comment
   public static void main(String[] args) {
     Lexicon lex = new Lexicon();
-    Scanner scan = new Scanner(System.in);
 
-    String newWord = lex.translate("Parky wintertime");
-    System.out.println(newWord);
-    System.out.println(decode("hoenttingy"));
-    System.out.println(decodeMessage("Hoenttingy deentclivityingy."));
+    String newWord = lex.transword("Parky wintertime");
+    System.out.println(newWord + lex.translate("Parky") + " " + lex.translate("wintertime")); //testing both translate methods
+    System.out.println(decode("hoenttingy")); //decoding string method
+    System.out.println(decodeMessage(lex.getSample(5))); //decoding message method
+    
+    //testing input methods
+    System.out.println(decodeInput()); //decoding input message method
+    System.out.println(encodeInput());  //encoding input method
   }
 
   /**
@@ -19,7 +23,7 @@ public class Main {
    * @param word The single word to be decoded.
    */
   public static String decode(String word) {
-	  char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+	  char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 	  int slength = word.length();
 	  
 	  //removing ingy
@@ -74,16 +78,20 @@ public class Main {
    * This method uses the decode(String) and a Scanner to decode a word specified
    * by the user.
    */
-  public static String decodeInput(String input) {
-    return decodeMessage(input);
+  //decoding other language stuff
+  public static String decodeInput() {
+	System.out.print("Type in sentence to decode: ");
+    return decodeMessage(scan.nextLine());
   }
   
   /**
    * This method uses the Lexicon translate(String) and a Scanner to encode a word specified
    * by the user.
    */
-  public static String encodeInput(String input) {
+  //encoding english input
+  public static String encodeInput() {
 	  Lexicon lex = new Lexicon();
-	  return lex.translate(input);
+	  System.out.print("Type in sentence to encode: ");
+	  return lex.transword(scan.nextLine());
   }
 }
