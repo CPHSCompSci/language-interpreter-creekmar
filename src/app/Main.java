@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
-    //test comment I think I'm done
+    //test comment I don't know what I'm doing in life
   public static void main(String[] args) {
     Lexicon lex = new Lexicon();
 
